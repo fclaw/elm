@@ -1,4 +1,4 @@
-module Main exposing (..)
+module Counter exposing (..)
 
 -- Press buttons to increment and decrement a counter.
 --
@@ -44,10 +44,11 @@ view : Model -> Html Msg
 view model =
   div [] [
     div [] [button [ onClick NewCounter ] [ text "add counter" ]]
-    , div [] (Dict.values (Dict.map render model.counters))
+    , div [] (Dict.values (Dict.map counterView model.counters))
     ]
-render : Int -> Int -> Html Msg
-render serial counter =
+
+counterView : Int -> Int -> Html Msg
+counterView serial counter =
   div []
     [
       div [] [text ("serial: " ++ (String.fromInt serial))]
